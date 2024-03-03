@@ -1,175 +1,92 @@
-<!--StAuth10244: I Zeel Patel, 000892233 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else."-->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rolling Dice</title>
-    <!-- React and Babel script-->
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <title>My Portfolio Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
 
-    <!-- css Style-->
-    <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            background-color: #c9c2c2;
-            margin: 0;
-            padding: 0;
-        }
-        #container {
-            margin-top: 50px;
-        }
-        #root h1 {
-            font-size: 30px;
-            color: #ff3300;
-            background-color: #333;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-        }
-        #root {
-            margin-top: 50px;
-        }
+    header {
+      background-color: #ffffff;
+    }
 
-        .dice {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            font-size: 25px;
-            line-height: 50px;
-            border: 2px solid #000;
-            border-radius: 10px;
-            margin: 5px;
-            background-color: #1a6c2c;
-            color:#fff;
-            font-weight: bold;
-            
-        }
-        .controls {
-            margin-top: 20px;
-        }
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
 
-        .controls label {
-            font-size: 24px;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        .controls button {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin-right: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #005;
-            color: #fff;
-            transition: background-color 0.3s;
+    .navbar-nav .nav-link {
+      font-weight: bold;
+    }
 
-        }
-        .controls button:hover{
-            background-color: #0056b3;
-        }
+    section {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+    }
 
-        .rollDice {
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            margin: 30px 10px 30px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: rgb(95, 21, 21); /* Green background color for roll button */
-            color: #fff;
-            transition: background-color 0.3s;
-        }
-        button.rollDice:hover {
-            background-color: red; /* Darker green on hover */
-        }
-    </style>
+    h1 {
+      color: #333333;
+    }
+
+    p {
+      color: #666666;
+    }
+
+    footer {
+      background-color: #ffffff;
+      color: #666666;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <div id="root">
-        <h1>Dice Rolling Game</h1>
-        <div id="container"></div>
-    </div>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Your Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3" href="Home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3" href="About.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3" href="Skills.html">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3" href="Projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary me-3" href="Contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <!--Javascript code with JSX-->
-    <script type="text/babel">
+  <main class="container py-5">
+    <section id="summary" class="mb-5">
+      <h1 class="display-4">Zeel Patel Software Support Portfolio</h1>
+      <p class="lead">Welcome to my portfolio website!!!!</p>
+    </section>
+  </main>
 
-        // define the dice components
-        function Dice({ value }) {
-            return (
-                <div className="dice">{value}</div>
-            );
-        }
+  <footer class="bg-light text-center py-4">
+    <p>&copy; 2024 Zeel Patel</p>
+  </footer>
 
-        // Define the App components
-
-        function App() {
-            // Define states using React hooks
-            const [diceNum, setdiceNum] = React.useState(1);
-            const [sidesNum, setsidesNum] = React.useState(6);
-            const [diceValues, setDiceValues] = React.useState(Array(diceNum).fill(1));
-
-            // Function to increment number of dice
-            const incrementdiceNum = () => {
-                setdiceNum(prev => prev + 1);
-                setDiceValues(prev => [...prev, 1]);
-            };
-
-            // Function to reset number of dice
-            const resetdiceNum = () => {
-                setdiceNum(1);
-                setDiceValues([1]);
-            };
-
-               // Function to roll the dice
-            const rollDice = () => {
-                const newDiceValues = diceValues.map(() => Math.floor(Math.random() * sidesNum) + 1);
-                setDiceValues(newDiceValues);
-            };
-
-            
-            const incrementDiceValue = (index) => {
-                const newDiceValues = [diceValues];
-                newDiceValues[index] = newDiceValues[index] === sidesNum ? 1 : newDiceValues[index] + 1;
-                setDiceValues(newDiceValues);
-            };
-
-             // Function to increment or decrement number of sides
-            const changesidesNum = (increment) => {
-                if ((increment && sidesNum < 20) || (!increment && sidesNum > 1)) {
-                    setsidesNum(prev => increment ? prev + 1 : prev - 1);
-                }
-            };
-
-            // JSX structure of the App component
-            return (
-                <div>
-                    <div className="controls">
-                        <label>Number of Dice: {diceNum}</label>
-                        <button onClick={incrementdiceNum}>+</button>
-                        <button onClick={resetdiceNum}>Reset</button>
-                    </div>
-                    <div className="controls">
-                        <label>Number of Sides: {sidesNum}</label>
-                        <button onClick={() => changesidesNum(false)}>Down</button>
-                        <button onClick={() => changesidesNum(true)}>Up</button>
-                    </div>
-                    <button className="rollDice" onClick={rollDice}>Roll</button>
-                    <div>
-                        {diceValues.map((value, index) => (
-                            <Dice key={index} value={value} />
-                        ))}
-                    </div>
-                </div>
-            );
-        }
-
-        // Render the App component into the container div
-        ReactDOM.render(
-            React.createElement(App),document.getElementById('container')
-        );
-    </script>
+  <!-- Bootstrap JS bundle (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
